@@ -1,0 +1,11 @@
+.dashboard_container {
+        .title {
+                padding: 15px
+        }
+        .table {
+                line-height: 1
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+                background-color: rgba(0, 0, 0, 0.01);
+        }
+}

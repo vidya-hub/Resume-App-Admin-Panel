@@ -1,0 +1,48 @@
+<div class="rAS_container">
+    <div *ngIf="loadding">
+        <div class="text-center">
+            <i style="font-size: xx-large" class="fa fa-spinner fa-spin"></i>
+        </div>
+    </div>
+    <div *ngIf="!loadding">
+        <div class="row title" >
+            <h5 class="mb-0 col-sm-6">
+                {{jobTitle.title}}
+            </h5>
+            <!-- <div class="col-sm-6 text-right">
+            <button class="btn btn-success btn-sm" (click)="fnOpenAddCategoryModal(addCategoryModal)">
+                <i class="fa fa-plus"></i>&nbsp;
+                <span>
+                    ADD
+                </span>
+            </button>
+        </div> -->
+
+        </div>
+   
+    <div class="p-2 boxes">
+        <div class="row align-items-center">
+            <div class="col-4 mx-auto">
+                <div class="jumbotron text-center" routerLink="/summary/{{jobTitle._id}}/{{jobTitle.title}}">
+                    <h4>Summary</h4>
+                    <h6>{{summary}}</h6>
+                </div>
+            </div>
+           
+            <div class="col-4 mx-auto">
+                <div class="jumbotron text-center" routerLink="/skills/{{jobTitle._id}}/{{jobTitle.title}}">
+                    <h4>Skills</h4>
+                    <h6>{{skills}}</h6>
+                </div>
+            </div>
+            <div class="col-4 mx-auto">
+                <div class="jumbotron text-center" routerLink="/job-description/{{jobTitle._id}}/{{jobTitle.title}}">
+                    <h4>Responsibility</h4>
+                    <h6>{{jobDescription}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

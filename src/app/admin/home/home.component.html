@@ -1,0 +1,26 @@
+<div class="m40">
+    <div class="rAS_container">
+        <div class="example-container">
+            <mat-toolbar color="primary" class="example-toolbar">
+                <a class="example-app-name fill-space" routerLink="/home"><span  >Resume App</span></a>
+                <button class="btn btn-sm btn-info mr-3 logoutBtn" (click)="fnLogout()">
+                                Logout <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        </button>
+            </mat-toolbar>
+        </div>
+        <br/><br/>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="second">
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-primary btn-lg mainBtn" *ngIf="userType != 'RESUMEADMIN'" routerLink="/user-data"><i class="fa fa-user fa-3x" aria-hidden="true"></i> <br/><br/>&nbsp;&nbsp;User Data&nbsp;</button>
+                            <button class="btn btn-primary btn-lg mainBtn" *ngIf="userType != 'USERADMIN'" routerLink="/dashboard"><i class="fa fa-id-card fa-3x" aria-hidden="true"></i> <br/><br/>Resume Data</button>
+                            <button class="btn btn-primary btn-lg mainBtn" routerLink="/manage-admin"><i class="fa fa-users fa-3x" aria-hidden="true"></i> <br/><br/>Manage Admin</button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

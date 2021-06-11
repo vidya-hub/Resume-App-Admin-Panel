@@ -1,0 +1,209 @@
+<!-- <div class="background">
+    <div class="yellowBg fullHeight">
+        <div class="wrapper wrapper-bg">
+            <div class="container-fluid">
+                <div class="login_container">
+                    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                        <li [ngbNavItem]="1">
+                            <a ngbNavLink>Add Admin</a>
+                            <ng-template ngbNavContent>
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type='text' class='form-control w-100 p-3' [(ngModel)]='newFname' placeholder="First Name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type='text' class='form-control w-100 p-3' [(ngModel)]='newLname' placeholder="Last Name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Mobile Number</label>
+                                    <input type='text' class='form-control w-100 p-3' [(ngModel)]='newMobileNo' placeholder="Mobile No." />
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type='text' class='form-control w-100 p-3' [(ngModel)]='newEmail' placeholder="Email" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type='text' class='form-control w-100 p-3' [(ngModel)]='newAddPassword' placeholder="Password" />
+                                </div>
+                                <div class="text-center">
+                                    <button type="button" *ngIf="!pleasWaitBtn" class="btn m-1 btn-success " (click)="fnAddAdmin()">Submit</button>
+                                    <button type="button" *ngIf="pleasWaitBtn" class="btn m-1 btn-success " disabled>Please wait..</button>
+                                </div>
+                            </ng-template>
+                        </li>
+                        <li [ngbNavItem]="2">
+                            <a ngbNavLink>Update Data</a>
+                            <ng-template ngbNavContent>
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type='text' class='form-control w-100 p-3' [(ngModel)]='cfname' placeholder="First Name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type='text' class='form-control w-100 p-3' [(ngModel)]='clname' placeholder="Last Name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Mobile Number</label>
+                                    <input type='text' class='form-control w-100 p-3' [(ngModel)]='cmobileNo' placeholder="Mobile No." />
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type='text' class='form-control w-100 p-3' [(ngModel)]='cemail' placeholder="Email" />
+                                </div>
+                                <div class="text-center">
+                                    <button type="button" *ngIf="!pleasWaitUpdateBtn" class="btn m-1 btn-success " (click)="fnUpdateData()">Update Data</button>
+                                    <button type="button" *ngIf="pleasWaitUpdateBtn" class="btn m-1 btn-success " disabled>Please wait...</button>
+                                </div>
+                            </ng-template>
+                        </li>
+                        <li [ngbNavItem]="3">
+                            <a ngbNavLink>Change Password</a>
+                            <ng-template ngbNavContent>
+                                <div class="form-group">
+                                    <label>Old Password</label>
+                                    <input type="password" placeholder="Old Password" class="form-control" [(ngModel)]="oldPassword">
+                                </div>
+                                <div class="form-group">
+                                    <label>New Password</label>
+                                    <input type="password" placeholder="New Password" class="form-control" [(ngModel)]="newPassword">
+                                </div>
+                                <div class="form-group">
+                                    <label>Re-Enter Password</label>
+                                    <input type="password" placeholder="Re-Enter Password" class="form-control" [(ngModel)]="rePassword">
+                                </div>
+                                <div class="text-center">
+                                    <button type="button" *ngIf="!pleasWaitBtn" class="btn m-1 btn-success " (click)="fnChangePassword()">Change Password</button>
+                                    <button type="button" *ngIf="pleasWaitBtn" class="btn m-1 btn-success " disabled>Please wait..</button>
+                                </div>
+                            </ng-template>
+                        </li>
+                    </ul>
+
+                    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+                    <div class="second">
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-primary btn-lg" routerLink="/user-data">User Data</button>
+                            <button class="btn btn-primary btn-lg" routerLink="/dashboard">Resume Data</button>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-primary btn-sm" routerLink="/dashboard">Log Out</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="m40">
+    <div class="rAS_container">
+        <div class="example-container">
+            <mat-toolbar color="primary" class="example-toolbar">
+                <a class="example-app-name fill-space" routerLink="/home"><span  >Resume App</span></a>
+                <button class="btn btn-sm btn-info mr-3 logoutBtn" (click)="fnLogout()">
+                                Logout <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        </button>
+            </mat-toolbar>
+        </div>
+        <br/><br/>
+        <div class="container">
+            <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+                <li [ngbNavItem]="1">
+                    <a ngbNavLink class="nav-link">Update Data</a>
+                    <ng-template ngbNavContent>
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type='text' class='form-control w-100 p-3' [(ngModel)]='cfname' placeholder="First Name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type='text' class='form-control w-100 p-3' [(ngModel)]='clname' placeholder="Last Name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile Number</label>
+                            <input type='text' class='form-control w-100 p-3' [(ngModel)]='cmobileNo' placeholder="Mobile No." />
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type='email' class='form-control w-100 p-3' [(ngModel)]='cemail' placeholder="Email" />
+                        </div>
+                        <div class="text-center">
+                            <button type="button" *ngIf="!pleasWaitUpdateBtn" class="btn m-1 btn-success " (click)="fnUpdateData()">Update Data</button>
+                            <button type="button" *ngIf="pleasWaitUpdateBtn" class="btn m-1 btn-success " disabled>Please wait...</button>
+                        </div>
+                    </ng-template>
+                </li>
+                <li [ngbNavItem]="2">
+                    <a ngbNavLink class="nav-link">Change Password</a>
+                    <ng-template ngbNavContent>
+                        <div class="form-group">
+                            <label>Old Password</label>
+                            <input type="password" placeholder="Old Password" class="form-control" [(ngModel)]="oldPassword">
+                        </div>
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <input type="password" placeholder="New Password" class="form-control" [(ngModel)]="newPassword">
+                        </div>
+                        <div class="form-group">
+                            <label>Re-Enter Password</label>
+                            <input type="password" placeholder="Re-Enter Password" class="form-control" [(ngModel)]="rePassword">
+                        </div>
+                        <div class="text-center">
+                            <button type="button" *ngIf="!pleasWaitBtn" class="btn m-1 btn-success " (click)="fnChangePassword()">Change Password</button>
+                            <button type="button" *ngIf="pleasWaitBtn" class="btn m-1 btn-success " disabled>Please wait..</button>
+                        </div>
+                    </ng-template>
+                </li>
+                <li [ngbNavItem]="3" *ngIf="userType == 'MAINADMIN'">
+                    <a ngbNavLink class="nav-link">Add Admin</a>
+                    <ng-template ngbNavContent>
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type='text' class='form-control w-100 p-3' [(ngModel)]='newFname' placeholder="First Name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type='text' class='form-control w-100 p-3' [(ngModel)]='newLname' placeholder="Last Name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile Number</label>
+                            <input type='text' class='form-control w-100 p-3' [(ngModel)]='newMobileNo' placeholder="Mobile No." />
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type='email' class='form-control w-100 p-3' [(ngModel)]='newEmail' placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type='password' class='form-control w-100 p-3' [(ngModel)]='newAddPassword' placeholder="Password" />
+                        </div>
+                        <div class="form-check">
+                            <label>Give Access</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" [(ngModel)]="userData">User Data</label>
+                          </div>
+                          <div class="checkbox">
+                            <label><input type="checkbox" [(ngModel)]="resumeData">Resume Data</label>
+                          </div>
+                        <div class="text-center">
+                            <button type="button" *ngIf="!pleasWaitBtn" class="btn m-1 btn-success " (click)="fnAddAdmin()">Submit</button>
+                            <button type="button" *ngIf="pleasWaitBtn" class="btn m-1 btn-success " disabled>Please wait..</button>
+                        </div>
+                    </ng-template>
+                </li>
+            </ul>
+
+            <div [ngbNavOutlet]="nav" class="mt-2"></div>
+            <!-- <div class="second">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-primary btn-lg mainBtn" routerLink="/user-data">User Data</button>
+                    <button class="btn btn-primary btn-lg mainBtn" routerLink="/dashboard">Resume Data</button>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,235 @@
+<div class="rAS_container">
+        <div class="row title">
+                <h5 class="mb-0 col-sm-6">
+                        Skills ({{jobtitle}})
+                </h5>
+                <div class="col-sm-6 text-right">
+                        <!-- <button class="btn btn-sm btn-info m-1" (click)="fnOpenFilterModal(filterModel)">
+                                <i class="fa fa-filter"></i>&nbsp;Filter
+                        </button> -->
+                        <button class="btn btn-success btn-sm addbtn" (click)="fnOpenAddCategoryModal(addCategoryModal)">
+                                <i class="fa fa-plus"></i>&nbsp;
+                                <span>
+                                        ADD
+                                </span>
+                        </button>
+                </div>
+        </div>
+        <table class="table table-striped">
+                <thead>
+                        <tr style="background: #fcfcfc;">
+                                <th class="pl-3 text-left" style="width: 40px;">
+                                        No.
+                                </th>
+                                <!-- <th class="text-left" (click)="fnOrderBy('name')"> -->
+                                <th class="text-left">
+                                        Title
+                                </th>
+                                <!-- <th class="text-left">
+                                        Status
+                                </th> -->
+                                <th class="text-right"></th>
+                        </tr>
+                </thead>
+                <tbody>
+                        <ng-template ngFor let-category [ngForOf]="categories" let-i="index">
+                                <tr>
+                                        <td class="align-middle p-2 pl-3 text-left" style="width: 40px;">{{ i+1 }}</td>
+                                        <td class="align-middle p-2 text-left">{{ category.title }}</td>
+                                        <!-- <td class="align-middle p-2 text-left">
+                                                <span class="badge badge-success" style="cursor: pointer;" *ngIf="category.status == '1'"
+                                                        (click)="fnOpenDisableCategoryModal(disableCategoryModal,category,i)">Active</span>
+                                                <span class="badge badge-danger" style="cursor: pointer;" *ngIf="category.status == '0'"
+                                                        (click)="fnOpenEnableCategoryModal(enableCategoryModal,category,i)">Disable</span>
+                                        </td> -->
+                                        <td class="align-middle p-2 text-right">
+                                                <a class="fa fa-edit fa-lg pr-1 text-info" (click)="fnOpenEditCategoryModal(viewCategoryModal,category,i)"
+                                                        style="cursor: pointer;"></a>
+                                                <a class="fa fa-trash fa-lg pl-1 text-danger" (click)="fnOpenDeleteCategoryModal(deleteCategoryModal,category,i)"
+                                                        style="cursor: pointer;"></a>
+                                        </td>
+                                </tr>
+                        </ng-template>
+                        <tr>
+                                <td class="text-center" colspan="5" *ngIf="loadmore">
+                                        <!-- <input type="button" class="btn btn-info" value="Load More" *ngIf="!pleasewaitforloadmore"
+                                                (click)="fnGetCategories()"> -->
+                                        <input type="button" class="btn btn-info" value="Please wait..." *ngIf="pleasewaitforloadmore"
+                                                disabled>
+                                </td>
+                        </tr>
+                </tbody>
+                <tbody *ngIf="loadding">
+                        <tr>
+                                <td class="text-center" colspan="5">
+                                        <i style="font-size: xx-large" class="fa fa-spinner fa-spin"></i>
+                                </td>
+                        </tr>
+                </tbody>
+                <tbody *ngIf="!loadding && categories.length == 0">
+                        <tr>
+                                <td class="text-center" colspan="5">
+                                        No record found.
+                                </td>
+                        </tr>
+                </tbody>
+        </table>
+    </div>
+    
+    <ng-template #addCategoryModal let-c="close" let-d="dismiss" class="modal-dialog-centered">
+        <div class="modal-header bg-light">
+                <h4 class="modal-title">Skills</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modalRef.dismiss()">
+                        <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+        <div class="modal-body">
+                <div class="form-group">
+                        <label>Tital*</label>
+                        <input type="text" placeholder="Skills" class="form-control" [(ngModel)]="name" (blur)="fnValidateNameField($event)">
+                </div>
+                <div class="form-group">
+                        <label>Experiance*</label>
+                        <ng-select [multiple]="true" [clearable]="false" [bindLabel]="name" [searchable]="false" [(ngModel)]="selectedExp">
+                                <ng-option *ngFor="let expValue of service.experianceArray" [value]="expValue.value">{{expValue.name}}</ng-option>
+                        </ng-select>
+                </div>
+        </div>
+        <div class="modal-footer text-center">
+                <div class="col-sm-12 text-right">
+                        <button type="button" *ngIf="!pleaseWaitBtn" class="btn m-1 btn-success " (click)="fnSubmitCategory()">Save</button>
+                        <button type="button" *ngIf="pleaseWaitBtn" class="btn m-1 btn-success " disabled>Please wait..</button>
+                        <button type="button" *ngIf="!pleaseWaitBtn" class="btn m-1 btn-danger" (click)="c('Close click')">Cancel</button>
+                </div>
+        </div>
+    </ng-template>
+    
+    <ng-template #viewCategoryModal let-c="close" let-d="dismiss" class="modal-dialog-centered">
+        <div class="modal-header bg-light" style="line-height: 2;">
+                <h4 class="modal-title">Skills</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modalRef.dismiss()">
+                        <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+        <div class="modal-body">
+                <div class="form-group">
+                        <label>Tital*</label>
+                        <input type="text" placeholder="Skills" class="form-control"  [(ngModel)]="name"
+                                (blur)="fnValidateNameField($event)">
+                </div>
+                <div class="form-group">
+                        <label>Experiance*</label>
+                        <ng-select [multiple]="true" [clearable]="false" [bindLabel]="name" [searchable]="false" [(ngModel)]="selectedExp">
+                                <ng-option *ngFor="let expValue of service.experianceArray" [value]="expValue.value">{{expValue.name}}</ng-option>
+                        </ng-select>
+                </div>
+        </div>
+    
+        <div class="modal-footer text-center">
+                <div class="col-sm-12 text-right">
+                        <button type="button" *ngIf="!pleaseWaitBtn" class="btn m-1 btn-success " (click)="fnUpdateCategory()">Update</button>
+                        <button type="button" *ngIf="pleaseWaitBtn" class="btn m-1 btn-success " disabled>Please wait..</button>
+                        <button type="button" *ngIf="!pleaseWaitBtn" class="btn m-1 btn-danger" (click)="c('Close click')">Cancel</button>
+                </div>
+        </div>
+    </ng-template>
+    
+    <ng-template #deleteCategoryModal let-c="close" let-d="dismiss" class="modal-dialog-centered">
+        <div class="modal-header bg-light">
+                <h4 class="modal-title">{{ selectedCategory.title }}</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modalRef.dismiss()">
+                        <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+        <div class="modal-body">
+                <div class="col-sm-12">
+                        Are you sure to delete?
+                </div>
+        </div>
+        <div class="modal-footer text-center">
+                <div class="col-sm-12 text-right">
+                        <button type="button" *ngIf="!pleaseWaitBtn" class="btn m-1 btn-success " (click)="fnDeleteCategory()">Delete</button>
+                        <button type="button" *ngIf="pleaseWaitBtn" class="btn m-1 btn-success " disabled>Please wait..</button>
+                        <button type="button" *ngIf="!pleaseWaitBtn" class="btn m-1 btn-danger" (click)="c('Close click')">Cancel</button>
+                </div>
+        </div>
+    </ng-template>
+    
+    <ng-template #enableCategoryModal let-c="close" let-d="dismiss" class="modal-dialog-centered">
+        <div class="modal-header bg-light">
+                <h4 class="modal-title">{{ selectedCategory.title }}</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modalRef.dismiss()">
+                        <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+        <div class="modal-body">
+                <div class="col-sm-12">
+                        Are you sure to enable?
+                </div>
+        </div>
+        <div class="modal-footer text-center">
+                <div class="col-sm-12 text-right">
+                        <button type="button" *ngIf="!pleaseWaitBtn" class="btn m-1 btn-success " (click)="fnEnableCategory()">Enable</button>
+                        <button type="button" *ngIf="pleaseWaitBtn" class="btn m-1 btn-success " disabled>Please wait..</button>
+                        <button type="button" *ngIf="!pleaseWaitBtn" class="btn m-1 btn-danger" (click)="c('Close click')">Cancel</button>
+                </div>
+        </div>
+    </ng-template>
+    
+    <ng-template #disableCategoryModal let-c="close" let-d="dismiss" class="modal-dialog-centered">
+        <div class="modal-header bg-light">
+                <h4 class="modal-title">{{ selectedCategory.title }}</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modalRef.dismiss()">
+                        <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+        <div class="modal-body">
+                <div class="col-sm-12">
+                        Are you sure to disable?
+                </div>
+        </div>
+        <div class="modal-footer text-center">
+                <div class="col-sm-12 text-right">
+                        <button type="button" *ngIf="!pleaseWaitBtn" class="btn m-1 btn-success " (click)="fnDisableCategory()">Disable</button>
+                        <button type="button" *ngIf="pleaseWaitBtn" class="btn m-1 btn-success " disabled>Please wait..</button>
+                        <button type="button" *ngIf="!pleaseWaitBtn" class="btn m-1 btn-danger" (click)="c('Close click')">Cancel</button>
+                </div>
+        </div>
+    </ng-template>
+    <ng-template #filterModel let-c="close" let-d="dismiss" class="modal-dialog-centered">
+        <div class="modal-header bg-light">
+                <h4 class="modal-title"> Filter</h4>
+                <button type="button" class="close" aria-label="Close" (click)="fnDismissModel()">
+                        <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+        <div class="modal-body">
+    
+                <div class="form-group mr-4">
+                        <label class="pr-1">Status</label>
+                        <select class="form-control" [(ngModel)]="statusSearch">
+                                <option value="">All</option>
+                                <option value="1">Active</option>
+                                <option value="0">Disabled</option>
+                        </select>
+                </div>
+    
+    
+                <div class="form-group mr-4">
+                        <label class="pr-1">Center</label>
+                        <select class="form-control" [(ngModel)]="selectedFilterCenter">
+                                <option value="">ALL</option>
+                                <option value="{{center.id}}" *ngFor="let center of centers">{{
+                                        center.name }}</option>
+                        </select>
+                </div>
+        </div>
+        <!-- <div class="modal-footer text-center">
+                <div class="col-sm-12 text-right">
+                        <button type="button" *ngIf="!pleaseWaitBtnForFilter" class="btn m-1 btn-success " (click)="fnFilter()">Filter</button>
+                        <button type="button" *ngIf="pleaseWaitBtnForFilter" class="btn m-1 btn-success " disabled>Please
+                                wait..</button>
+                        <button type="button" *ngIf="!pleaseWaitBtnForFilter" class="btn m-1 btn-danger" (click)="fnDismissModel()">Cancel</button>
+                </div>
+        </div> -->
+    </ng-template>

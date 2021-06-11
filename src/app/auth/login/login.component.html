@@ -1,0 +1,74 @@
+<div class="background">
+    <div class="yellowBg fullHeight">
+        <div class="wrapper wrapper-bg">
+            <div class="container-fluid">
+                <div class="login_container" *ngIf="login">
+                    <div class="col-sm-12 text-center p-0 pb-3 ">
+                        <img src=".\assets\tekpillar-logo.jpg" class="w-100">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control w-100 p-3" placeholder="User Name" [(ngModel)]="email" id="email" required email>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control w-100 p-3" placeholder="Password" id="pwd" [(ngModel)]="password" required>
+                    </div>
+                    <div class="col-sm-12 text-right p-0" style="margin-top:-1rem ">
+                        <a class="btn btn-link" (click)="fnOpenForgetPasswordModal(forgotPasswordModal)" [class.disabled]="pleaseWait">Forgot Password?</a>
+                    </div>
+                    <button type='button' class="btn site-btn btn-success btn-block" *ngIf='!pleaseWait' (click)="fnLogin()">Login</button>
+                    <button type='button' class="btn site-btn btn-success btn-block" *ngIf='pleaseWait' disabled>Please wait..</button>
+                </div>
+                <div class="login_container" *ngIf="!login">
+                    <div class="col-sm-12 text-center p-0 pb-3 ">
+                        <img src=".\assets\tekpillar-logo.jpg" class="w-100">
+                    </div>
+                    <div class="text-center">
+                        <h3>Forgot Password</h3>
+                    </div>
+                    <div class="form-group">
+                        <input type='text' class='form-control w-100 p-3' [(ngModel)]='fpEmail' placeholder="Email Id" [disabled]="fpEmailDisable"/>
+                    </div>
+                    <div class="form-group">
+                        <input type='text' class='form-control w-100 p-3' *ngIf="isOTPSent" [(ngModel)]='fpOTP' placeholder="OTP"/>
+                    </div>
+                    <div class="form-group">
+                        <input type='text' class='form-control w-100 p-3' *ngIf="isOTPSent" [(ngModel)]='fpNewPassword' placeholder="New Password" />
+                    </div>
+                    <div class="form-group">
+                        <input type='text' class='form-control w-100 p-3' *ngIf="isOTPSent" [(ngModel)]='fpConfirmNewPassword' placeholder="Confirm New Password" />
+                    </div>
+                    <div class="col-sm-12 text-right p-0" style="margin-top:-1rem ">
+                        <a class="btn btn-link" (click)="fnGotLogin()" [class.disabled]="pleaseWait">Back
+                                                        To Login?</a>
+                    </div>
+                    <button type='button' class="btn site-btn btn-success btn-block" *ngIf='!btnWaitFP' (click)="fnForgorPassword()">Submit</button>
+                    <button type='button' class="btn site-btn btn-success btn-block" *ngIf='btnWaitFP' disabled>Please wait..</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template class="modal fade modal-dialog" #forgotPasswordModal>
+    <div class="modal-header">
+        <h4 class="modal-title">Forgot Password</h4>
+        <!-- <button type="button" class="close" aria-label="Close" (click)="fnCloseForgotPasswordModel()">
+                        <span aria-hidden="true">&times;</span>
+                </button> -->
+    </div>
+    <div class="modal-body">
+        <div class='form-group'>
+            <input type='text' class='form-control' [(ngModel)]='fpMobileNo' placeholder="Mobile No" />
+        </div>
+        <div class='form-group'>
+            <input type='text' class='form-control' [(ngModel)]='fpEmail' placeholder="Email" />
+        </div>
+    </div>
+    <div class='modal-footer'>
+        <div class='text-center'>
+            <input type='button' class='btn btn-success m-1' value='Submit' *ngIf='!btnWaitFP' (click)='fnForgorPassword()' />
+            <input type='button' class='btn btn-success m-1' value='Please wait...' *ngIf='btnWaitFP' disabled />
+            <input type='button' class='btn btn-danger m-1' value='Cancel' *ngIf='!btnWaitFP' (click)='fnCancel()' />
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,209 @@
+<html moznomarginboxes mozdisallowselectionprint>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0">
+    <title>PDF 1</title>
+    <style type="text/css" media="print">
+        @page {
+            size: auto;
+            margin: 5mm;
+        }
+
+        /* uncomment for check A4 size */
+        /* @page {
+            size: 7in 9.25in;
+            margin: 27mm 16mm 27mm 16mm;
+        } */
+
+        @media print {
+
+            .footer,
+            #non-printable {
+                display: none !important;
+            }
+
+            #printable {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body style="padding:0px; margin:0px; box-sizing: border-box;">
+    <div style="  margin:15px 15px; padding:0px;font-family: PT Sans, sans-serif;">
+        <div>
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td>
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <div style="border-bottom: 2px solid #000; ">
+                                                    <p
+                                                        style="text-align: center;font-size: 24px;border-bottom: 1px solid #000;margin: 0;margin-bottom: 3px;padding: 25px 0;">
+                                                        {{firstName}} {{lastName}}
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                        <tr style="margin-top: 5px;">
+                                            <td>
+                                                <ul style="text-align: center; list-style-position: inside;">
+                                                    <li style="font-size: 16px;  display:inline;" *ngIf="address">
+                                                        1 {{address}},</li>
+                                                    <li style="font-size: 16px;  display:inline;" *ngIf="phoneNo">
+                                                        2 {{phoneNo}},</li>
+                                                    <li style="font-size: 16px;  display:inline;" *ngIf="phoneNo">
+                                                        3 {{email}}</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr *ngIf="links && links.length>0">
+                                            <td>
+                                                <ul style="text-align: center; list-style-position: inside;">
+                                                    <li style="font-size: 16px; margin-bottom: 5px;"
+                                                        *ngFor="let link of links">
+                                                        {{link}}</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+
+                                        <tr *ngIf="professionalSummary">
+                                            <td style="padding-bottom: 30px;">
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Professional Summary</p>
+                                                <p style="color: #000; font-size: 16px; ">{{professionalSummary}}</p>
+                                            </td>
+                                        </tr>
+
+                                        <tr *ngIf="skills && skills.length > 0">
+                                            <td style="padding-bottom: 30px;">
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Skills</p>
+                                                <ul
+                                                    style="text-align: left;list-style-position: inside;margin: 0;padding: 0;display: flex;flex-wrap: wrap;">
+                                                    <li style="width: 50%;" *ngFor="let skill of skills">{{skill}}</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <ng-container *ngIf="workHistory && workHistory.length > 0">
+                                            <tr style="padding-bottom: 15px;">
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Work History</p>
+                                            </tr>
+                                            <tr *ngFor="let wh of workHistory">
+
+                                                <td style="padding-bottom: 15px;">
+                                                    <p style="color: #000; font-size: 16px; "> <span
+                                                            style="font-weight: bold">{{wh.jobTitle}} </span>,
+                                                        {{wh.startDate|date:'MM/yyyy'}} to <span
+                                                            *ngIf="wh.currentlyWorkHere">Currant </span><span
+                                                            *ngIf="!wh.currentlyWorkHere">{{wh.endDate|date:'MM/yyyy'}}</span>
+                                                    </p>
+                                                    <p style="color: #000; font-size: 16px; ">{{wh.employer}} -
+                                                        {{wh.city}},{{wh.state}}
+                                                    </p>
+                                                    <!-- <ul>
+                                                        <li style="font-size: 16px; margin-bottom: 5px;">
+                                                            https://www.google.com/</li>
+                                                        <li style="font-size: 16px; margin-bottom: 5px;">
+                                                            https://www.google.com/</li>
+                                                        <li style="font-size: 16px; margin-bottom: 5px;">
+                                                            https://www.google.com/</li>
+                                                    </ul> -->
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+                                        <ng-container *ngIf="education && education.length > 0">
+                                            <p
+                                                style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                Education</p>
+                                            <tr *ngFor="let ed of education">
+                                                <td style="padding-bottom: 30px;">
+
+                                                    <p style="color: #000; font-size: 16px; ">{{ed.fieldOfStudy}}
+                                                        {{ed.degree}}: {{ed.graduationYear}}</p>
+                                                    <p>{{ed.schoolName}} - {{ed.schoolLocation}}, {{ed.state}}</p>
+                                                </td>
+                                            </tr>
+                                        </ng-container>
+
+
+                                        <tr *ngIf="accomplishments && accomplishments.length > 0">
+                                            <td style="padding-bottom: 15px;">
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Accomplishments</p>
+                                                <ul>
+                                                    <li style="font-size: 16px; margin-bottom: 5px;"
+                                                        *ngFor="let accomplishment of accomplishments">
+                                                        {{accomplishment}}</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+
+                                        <tr *ngIf="affiliations && affiliations.length > 0">
+                                            <td style="padding-bottom: 15px;">
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Affilations</p>
+                                                <ul>
+                                                    <li style="font-size: 16px; margin-bottom: 5px;"
+                                                        *ngFor="let affiliation of affiliations">{{affiliation}}</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+
+                                        <tr *ngIf="certifications && certifications.length > 0">
+                                            <td style="padding-bottom: 15px;">
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Certifications</p>
+                                                <ul>
+                                                    <li style="font-size: 16px; margin-bottom: 5px;"
+                                                        *ngFor="let certification of certifications">{{certification}}
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding-bottom: 15px;"
+                                                *ngIf="additionalInformation && additionalInformation.length>0">
+                                                <p
+                                                    style="color: #000; font-size: 30px; font-weight: 700; line-height: 36px; margin: 0; margin-bottom: 15px; font-weight: 700;">
+                                                    Additional Information</p>
+                                                <p style="font-size: 16px; line-height: 16px;"
+                                                    *ngFor="let aI of additionalInformation"><span
+                                                        style="font-weight: bold">{{aI.title}} </span>:-
+                                                    {{aI.description}}</p>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

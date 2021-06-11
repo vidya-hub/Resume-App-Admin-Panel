@@ -1,0 +1,57 @@
+// .logoutBtn {
+//     position: absolute;
+//     right: 0;
+//     background-color: #0573E4;
+//     border-color: #0573E4;
+// }
+
+.logoutBtn {
+    background-color: #0573E4;
+    border-color: #0573E4;
+}
+.nav-right{
+    position: absolute;
+    right: 0;
+}
+
+.dashboardBtn {
+    margin-left: 15px;
+    background-color: #0573E4;
+    border-color: #0573E4;
+}
+
+.rAS_container {
+    .title {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        background: #fcfcfc;
+    }
+    .table {
+        line-height: 1
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.01);
+    }
+}
+
+.example-toolbar {
+    background: #012281 !important;
+}
+
+.example-app-name {
+    color: white
+}
+
+.example-app-name:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.user-title{
+    margin-bottom: 15px !important;
+    font-weight: bold;
+}
+
+.container{
+    min-width: 100%
+}

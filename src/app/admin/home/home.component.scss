@@ -1,0 +1,96 @@
+.login_container {
+    max-width: 500px;
+    padding: 30px;
+    -ms-grid-row-align: center;
+    align-self: center;
+    background: #E8E8E8;
+    position: absolute;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cRed {
+    color: red;
+    cursor: pointer;
+}
+
+.close {
+    height: auto;
+}
+
+@media (max-width: 767px) {
+    .close {
+        min-width: auto;
+        margin: 10px;
+    }
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(216, 224, 224, 0.1803921568627451);
+}
+
+.btn-lg {
+    margin: 10px
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    color: white;
+    // background-color: #28a745;
+    // border-color: #28a745;
+    background-color: #0573E4;
+    border-color: #0573E4;
+}
+
+.logoutBtn {
+    position: absolute;
+    right: 0;
+    background-color: #0573E4;
+}
+
+.dashboardBtn {
+    margin-left: 15px;
+}
+
+.example-toolbar {
+    background: #012281 !important;
+}
+
+.mainBtn {
+    background: #012281 !important;
+    border-color: #012281 !important;
+    min-height: 175px;
+}
+
+.btn-success {
+    background-color: #0573E4;
+    border-color: #0573E4;
+}
+
+.example-app-name {
+    color: white
+}
+
+.example-app-name:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.card{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card div{
+    grid-row: 2/3;
+}

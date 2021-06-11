@@ -1,0 +1,28 @@
+.rAS_container {
+    .title {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            background: #fcfcfc;
+    }
+    .table {
+            line-height: 1
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.01);
+    }
+    .searchbar {
+            // background: #fdfdfd;
+    }
+
+    .addbtn{
+        background-color: #012281;
+    }
+}
+
+.modal-body {
+    .form-group {
+            label {
+                    font-size: 15px;
+            }
+    }
+}
